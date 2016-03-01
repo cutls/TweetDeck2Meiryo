@@ -78,13 +78,12 @@ limitations under the License.
 <script>
 function regbyprototype(id){ 
 var xurl="https://sub-yoshikawapiano.ssl-lolipop.jp/reg.php?data="+id;
-alert(xurl);
 new Ajax.Request(xurl, {
 		method: "get",
 		asynchronous: true,
 		onComplete: function(response) {
 		var mess=response.responseText;
-alert("送信");
+alert(mess);
 		}
 	});
 }
