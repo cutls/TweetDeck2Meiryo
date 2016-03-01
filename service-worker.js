@@ -12,7 +12,7 @@ self.addEventListener("push", function(event) {
   event.waitUntil(
     getEndpoint()
     .then(function(endpoint) {
-      return fetch('/notifications.json?endpoint=' + endpoint)
+      return fetch('/gcm-reg/data.json?endpoint=' + endpoint)
     })
     .then(function(response) {
       if (response.status === 200) {
