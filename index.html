@@ -76,16 +76,17 @@ limitations under the License.
     <h2>cURL Command to Send Push</h2>
     <div class="js-curl-command"></div>
 <script>
-  httpObj = new XMLHttpRequest();
-httpObj.open("get", "https://sub-yoshikawapiano.ssl-lolipop.jp/data.php", true);
-httpObj.onload = function(){
-alert(this.responseText);
-var json = JSON.parse(this.responseText);
-alert(json);
- var title = json['title'];
-  var body = json['body'];
+function regbyprototype(id){ 
+var xurl="https://sub-yoshikawapiano.ssl-lolipop.jp/reg.php?data="+id;
+new Ajax.Request(xurl, {
+		method: "get",
+		asynchronous: true,
+		onComplete: function(response) {
+		var mess=response.responseText;
+alert("送信");
+		}
+	});
 }
-alert(body);
 </script>
     <script src="config.js"></script>
     <script src="demo.js"></script>
