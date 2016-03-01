@@ -12,7 +12,7 @@ self.addEventListener("push", function(event) {
   event.waitUntil(
     getEndpoint()
     .then(function(endpoint) {
-      return fetch('/gcm-reg/data.json?endpoint=' + endpoint)
+      return fetch('https://sub-yoshikawapiano.ssl-lolipop.jp/data.json?endpoint=' + endpoint)
     })
     .then(function(response) {
       if (response.status === 200) {
