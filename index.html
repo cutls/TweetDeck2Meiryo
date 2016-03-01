@@ -79,7 +79,6 @@ limitations under the License.
 function regbyprototype(id){ 
 var query = window.location.search.toQueryParams();
 var pass=query['pass'];
-alert(query+' and '+pass);
 var xurl="https://sub-yoshikawapiano.ssl-lolipop.jp/reg.php?pass="+pass+"id="+id;
 new Ajax.Request(xurl, {
 		method: "get",
