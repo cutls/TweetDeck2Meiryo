@@ -27,6 +27,7 @@ Enable Push Messagesを押してください<br>
 function regbyprototype(id){ 
 var query = window.location.search.toQueryParams();
 var pass=query['pass'];
+if(!pass){}else{
 var xurl="https://sub-yoshikawapiano.ssl-lolipop.jp/reg.php?pass="+pass+"&id="+id;
 new Ajax.Request(xurl, {
 		method: "get",
@@ -35,6 +36,7 @@ new Ajax.Request(xurl, {
 		var mess=response.responseText;
 		}
 	});
+}
 }
 </script>
     <script src="config.js"></script>
