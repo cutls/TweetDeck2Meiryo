@@ -15,7 +15,7 @@ self.addEventListener("push", function(event) {
       return fetch('https://sub-yoshikawapiano.ssl-lolipop.jp/data.json?endpoint=' + endpoint)
     })
     .then(function(response) {
-      if (response.status === 200) {
+      if (!response.json) {}else{
         return response.json()
       }
       throw new Error('notification api response error')
