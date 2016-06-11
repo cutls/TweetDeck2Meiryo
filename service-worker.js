@@ -25,6 +25,23 @@ self.addEventListener("push", function(event) {
         icon: response.icon,
         body: response.body
       })
+
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close()
+
+  var url = "/"
+  if (event.notification.data.url) {
+    url = event.notification.data.url
+  }
+
+  event.waitUntil(
+    clients.matchAll({type: 'window'}).then(function() {
+      if(clients.openWindow) {
+        return clients.openWindow(url)
+      }
+    })
+  )
+})
     })
   )
 })
