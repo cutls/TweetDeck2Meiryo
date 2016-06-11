@@ -12,10 +12,10 @@ self.addEventListener("push", function(event) {
   event.waitUntil(
     getEndpoint()
     .then(function(endpoint) {
-      return fetch('https://sub-yoshikawapiano.ssl-lolipop.jp/data.json?endpoint=' + endpoint)
+      return fetch('/notifications.json?endpoint=' + endpoint)
     })
     .then(function(response) {
-      if (!response.json) {}else{
+      if (response.status === 200) {
         return response.json()
       }
       throw new Error('notification api response error')
@@ -23,8 +23,14 @@ self.addEventListener("push", function(event) {
     .then(function(response) {
       self.registration.showNotification(response.title, {
         icon: response.icon,
-        body: response.body
+        body: response.body,
+        data: {
+          url: response.url
+        }
       })
+    })
+  )
+})
 
 self.addEventListener('notificationclick', function(event) {
   event.notification.close()
@@ -39,9 +45,6 @@ self.addEventListener('notificationclick', function(event) {
       if(clients.openWindow) {
         return clients.openWindow(url)
       }
-    })
-  )
-})
     })
   )
 })
